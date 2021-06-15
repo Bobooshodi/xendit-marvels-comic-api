@@ -3,4 +3,5 @@ export interface CacheServiceInterface {
   setCache(key: string, data: any, duration?: number, onSuccess?: () => void);
   getCache(key: string, onValue: (err, reply) => void);
   clearCache(onValue: (err, reply) => void);
+  clearCacheWithPattern(key: string, onValue: (err) => void);
 }

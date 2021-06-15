@@ -81,7 +81,7 @@ export class CharacterService implements CharacterServiceInterface {
   create(model: any): Promise<any> {
     throw new Error("Method not implemented.");
   }
-  update(updatedModel: any): Promise<any> {
+  update(id, updatedModel: any): Promise<any> {
     throw new Error("Method not implemented.");
   }
   delete(id: string): Promise<boolean> {

@@ -5,11 +5,15 @@ import { validationResult } from "express-validator";
 import container from "../service-container/inversify.config";
 
 import { ServiceInterfaceTypes } from "../service-container/ServiceTypes";
-import { CharacterServiceInterface } from "../services";
+import { CacheServiceInterface, CharacterServiceInterface } from "../services";
 import { redisMiddleware } from "../middlewares/redis-middleware";
 
 var characterService = container.get<CharacterServiceInterface>(
   ServiceInterfaceTypes.ServiceTypes.characterService
+);
+
+var cacheService = container.get<CacheServiceInterface>(
+  ServiceInterfaceTypes.ServiceTypes.cacheService
 );
 
 export async function create(req: any) {
@@ -20,6 +24,10 @@ export async function create(req: any) {
     }
 
     const { character } = req.body;
+
+    cacheService.clearCacheWithPattern("character/*", (err) => {
+      console.error("Unable to clear Pattern from cache");
+    });
 
     return await characterService.createAndSave(character);
   } catch (error) {
@@ -46,11 +54,18 @@ export async function getAll(req: express.Request) {
 }
 
 export async function update(req: express.Request) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new JsonErrorResponse({ errors: errors.array() });
+  }
   const { id } = req.params;
+  const { character } = req.body;
 
-  const existingImage = await characterService.getById(id);
+  cacheService.clearCacheWithPattern("character/*", (err) => {
+    console.error("Unable to clear Pattern from cache");
+  });
 
-  return await characterService.update(existingImage);
+  return await characterService.update(id, character);
 }
 
 export default (app: IExpressWithJson) => {

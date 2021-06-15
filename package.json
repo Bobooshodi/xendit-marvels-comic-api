@@ -36,6 +36,7 @@
     "nanoid": "^3.1.23",
     "pino-http": "^5.5.0",
     "redis": "^3.1.2",
+    "redis-delete-pattern": "^0.1.0",
     "reflect-metadata": "^0.1.13",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6"

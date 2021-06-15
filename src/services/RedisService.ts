@@ -1,6 +1,6 @@
-import { promisify } from "util";
 import { inject, injectable } from "inversify";
-import { createClient, RedisClient } from "redis";
+import redis, { createClient, RedisClient } from "redis";
+import redisDeletePattern from "redis-delete-pattern";
 
 import { ServiceInterfaceTypes } from "../service-container/ServiceTypes";
 import { LoggerServiceInterface } from "./interfaces/LoggerServiceInterface";
@@ -45,5 +45,15 @@ export class RedisService implements CacheServiceInterface {
 
   clearCache(onFlush: (err, reply) => void) {
     this.client.flushall(onFlush);
+  }
+
+  clearCacheWithPattern(pattern: string, onError: (err) => void) {
+    redisDeletePattern(
+      {
+        redis: redis,
+        pattern: pattern,
+      },
+      onError
+    );
   }
 }
