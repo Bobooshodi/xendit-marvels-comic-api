@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Bobooshodi/xendit-marvels-comic-api.git#readme",
   "dependencies": {
     "@types/lodash": "^4.14.170",
+    "@types/redis": "^2.8.29",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -34,7 +35,9 @@
     "lodash": "^4.17.21",
     "nanoid": "^3.1.23",
     "pino-http": "^5.5.0",
-    "reflect-metadata": "^0.1.13"
+    "redis": "^3.1.2",
+    "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
@@ -45,6 +48,7 @@
     "@types/node": "^14.14.14",
     "@types/nodemon": "^1.19.0",
     "@types/sqlite3": "^3.1.6",
+    "@types/swagger-ui-express": "^4.1.2",
     "chai": "*",
     "chai-http": "^4.3.0",
     "mocha": "*",

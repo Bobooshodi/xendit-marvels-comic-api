@@ -52,9 +52,9 @@ export class CharacterService implements CharacterServiceInterface {
 
       return map(characters, (character: any) => character.id);
     } catch (e) {
-      this.logger.error(e);
+      this.logger.error(e.data);
 
-      throw new Error(e.data);
+      throw new Error(e.data.status);
     }
   }
   async getById(id: string): Promise<any> {
@@ -73,9 +73,9 @@ export class CharacterService implements CharacterServiceInterface {
       const character = get(res.data, "data.results")[0]; // safe since Error if not found
       return pick(character, ["id", "name", "description"]);
     } catch (e) {
-      this.logger.error(e.response.data);
+      this.logger.error(e.data);
 
-      throw new Error(e.data);
+      throw new Error(e.data.status);
     }
   }
   create(model: any): Promise<any> {

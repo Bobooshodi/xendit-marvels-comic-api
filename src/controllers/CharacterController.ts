@@ -6,6 +6,7 @@ import container from "../service-container/inversify.config";
 
 import { ServiceInterfaceTypes } from "../service-container/ServiceTypes";
 import { CharacterServiceInterface } from "../services";
+import { redisMiddleware } from "../middlewares/redis-middleware";
 
 var characterService = container.get<CharacterServiceInterface>(
   ServiceInterfaceTypes.ServiceTypes.characterService
@@ -55,6 +56,33 @@ export async function update(req: express.Request) {
 export default (app: IExpressWithJson) => {
   app.postJson("/characters", create);
   app.deleteJson("/characters/:id", remove);
-  app.getJson("/characters", getAll);
-  app.getJson("/characters/:id", get);
+  /**
+   * @swagger
+   * /characters:
+   *   get:
+   *     description: Get all Character IDs
+   *     responses:
+   *       200:
+   *         description: Success
+   *
+   */
+  app.getJson("/characters", redisMiddleware, getAll);
+  /**
+   * @swagger
+   * /characters/{id}:
+   *   get:
+   *     description: Get a Character Details
+   *     parameters:
+   *     - name: ID
+   *       description: The Character's ID
+   *       in: path
+   *       required: true
+   *       schema:
+   *         type: integer
+   *     responses:
+   *       200:
+   *         description: Success
+   *
+   */
+  app.getJson("/characters/:id", redisMiddleware, get);
 };
