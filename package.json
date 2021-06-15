@@ -1,0 +1,54 @@
+{
+  "name": "xendit-marvels-comic-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "nodemon server.js",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/tests/**/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bobooshodi/xendit-marvels-comic-api.git"
+  },
+  "author": "Bobooshodi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bobooshodi/xendit-marvels-comic-api.git"
+  },
+  "homepage": "https://github.com/Bobooshodi/xendit-marvels-comic-api.git#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "dotenv-parse-variables": "^2.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.8.0",
+    "express-with-json": "0.0.6",
+    "glob": "^7.1.7",
+    "inversify": "^5.0.5",
+    "nanoid": "^3.1.23",
+    "pino-http": "^5.5.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/chai": "^4.2.14",
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.9",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.14",
+    "@types/nodemon": "^1.19.0",
+    "@types/sqlite3": "^3.1.6",
+    "chai": "*",
+    "chai-http": "^4.3.0",
+    "mocha": "*",
+    "nodemon": "^2.0.6",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
