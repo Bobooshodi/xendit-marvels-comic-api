@@ -44,9 +44,13 @@ export async function remove(req: express.Request) {
 }
 
 export async function get(req: express.Request) {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  return await characterService.getById(id);
+    return await characterService.getById(id);
+  } catch (e) {
+    throw e;
+  }
 }
 
 export async function getAll(req: express.Request) {

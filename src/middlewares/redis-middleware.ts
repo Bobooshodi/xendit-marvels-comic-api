@@ -8,6 +8,7 @@ const cacheService = container.get<CacheServiceInterface>(
 
 export const redisMiddleware = (req, res, next) => {
   let key = req.originalUrl || req.url;
+  res.type("application/json");
   cacheService.getCache(key, function (err, cachedData) {
     if (cachedData) {
       res.send(JSON.parse(cachedData));

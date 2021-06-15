@@ -54,7 +54,11 @@ export class CharacterService implements CharacterServiceInterface {
     } catch (e) {
       this.logger.error(e.data);
 
-      throw new Error(e.data.status);
+      if (!!e.data.status) {
+        throw new Error(e.data.status);
+      }
+
+      throw new Error(e.data);
     }
   }
   async getById(id: string): Promise<any> {
@@ -75,7 +79,11 @@ export class CharacterService implements CharacterServiceInterface {
     } catch (e) {
       this.logger.error(e.data);
 
-      throw new Error(e.data.status);
+      if (!!e.data.status) {
+        throw new Error(e.data.status);
+      }
+
+      throw new Error(e.data);
     }
   }
   create(model: any): Promise<any> {

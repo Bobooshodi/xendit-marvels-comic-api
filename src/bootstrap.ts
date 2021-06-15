@@ -52,7 +52,7 @@ function errorHandler(error, req, res, next) {
       res.json(error);
     }
   }
-  console.error(error);
+  // console.error(error);
 }
 
 export async function bootstrap() {

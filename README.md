@@ -6,7 +6,7 @@ sh "git clone https://github.com/Bobooshodi/xendit-marvels-comic-api.git"
 sh "cd xendit-marvels-comic-api";
 
 rename .env.dist or .env.prod to .env and modify .env accordingly
-renamr docker-compose.debug.yaml to docker-compose.yaml and modify accordingly
+renam docker-compose.debug.yaml to docker-compose.yaml and modify accordingly
 
 docker-compose up -d --build
 
@@ -15,6 +15,7 @@ docker-compose up -d --build
                         Without Docker
 
 Requirements - NPM
+Redis Server - Running
 
 clone the Repo
 sh "git clone https://github.com/Bobooshodi/xendit-marvels-comic-api.git"
