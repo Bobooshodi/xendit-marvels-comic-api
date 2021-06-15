@@ -82,9 +82,9 @@ export class HttpRequestService implements HTTPRequestInterface {
   }
 
   handleError(error: Response | any) {
-    console.error("ApiService::handleError", error);
+    console.error("ApiService::handleError", error.response.data);
 
-    return Promise.reject(error);
+    return Promise.reject(error.response);
   }
 
   getLoggedInUserToken() {
