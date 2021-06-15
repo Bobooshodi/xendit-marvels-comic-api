@@ -41,7 +41,7 @@ export async function get(req: express.Request) {
 }
 
 export async function getAll(req: express.Request) {
-  return await characterService.getPaginated(req.query);
+  return await characterService.getAll(req.query);
 }
 
 export async function update(req: express.Request) {
